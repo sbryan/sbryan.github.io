@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Foldio360 Animation with CSS</h1>
+    <p>The following examples demonstrate how to achieve the effect of the animated pictures captured by the Foldio360 app, but using only CSS animation-* properties and @keyframes definitions.</p>
+    <p>Depending ou your needs, and what your tools allow, this <em>MAY</em> be sufficient to achieve independance from the spinzam.com service for showcasing your Foldio360 captures.</p>
+    <p>The Foldio360 image used in these examples were taken by my wife using the iPhone app and the 15" Foldio2 Studio. Here are the basic steps to get the image URL for reference or to be saved locally or to your web site/service...</p>
+    <p>Instructions:
+      <ol>
+        <li>Use the Foldio360 App to capture and save your 360 image to spinzam.com
+        <li>Once available on spinzam.com, visit the provided URL for your captured 360 image, for example:<br><code>https://spinzam.com/shot/?idx=1639</code>
+        <li>Using your browswers "View Source" or "Inspect" tool, find the <b><code>&lt;div class="viewPort"&gt;</code></b> element, for example:<br><code>&lt;div class="viewPort" style="background-image: url(&quot;<b>https://dc0sih4595mw5.cloudfront.net/contents/member/1283/12831474588621_film.jpg</b>&quot;);"&gt;</code>
+        <li>Copy and paste that URL into a new tab/window to see the full "film strip" version of your image:<br><a href="https://dc0sih4595mw5.cloudfront.net/contents/member/1283/12831474588621_film.jpg">https://dc0sih4595mw5.cloudfront.net/contents/member/1283/12831474588621_film.jpg</a>
+        <li>Save the image:
+          <ul>
+            <li>Locally: right-click -&gt; "Save As"
+            <li>Upload it to your web service or web site
+            <li>Just reference it using the URL that spinzam.com uses (see step 3 above)
+            <li>Optionally, convert the URL to a shorter one using a service like like <a href="https://tinyurl.com">tinyurl.com</a> or <a href="https://goo.gl">goo.gl</a>
+          </ul>
+        <li>Now that you have the base image/strip of all frames of your 360 image, see the examples below on one way to use them without the need for JavaScript... using only CSS!
+      </ol> 
+    </p>
+
+    <div class="example">
+      <h2>Basic example...</h2>
+      <p data-height="376" data-theme-id="dark" data-slug-hash="Xjrpoa" data-default-tab="html,result" data-user="dbryans" data-embed-version="2" class="codepen">See the source for <a href="http://codepen.io/dbryans/pen/Xjrpoa/">Foldio360 Simple Animation</a> on <a href="http://codepen.io">CodePen</a>.</p>
+      <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+      <style id="simplestyle">
+      @keyframes rotate24x640 {
+        from { background-position-y: 0; }
+        to { background-position-y: calc(24 * 640px); }
+      }
+      #simple {
+        width: 640px;
+        height: 640px;
+        animation: rotate24x640 2.25s steps(24) infinite;
+
+        /* Film strip URL for the remotely hosted image used by spinzam.com:
+        background-image: url('https://dc0sih4595mw5.cloudfront.net/contents/member/1283/12831474588621_film.jpg');
+        */
+
+        /* Film strip URL for my locally hosted image */
+        background-image: url('https://sbryan.github.io/images/foldio360-film-strip-example.jpg');
+      }
+      </style>
+      <div id="simple" style="background-image: url('https://dc0sih4595mw5.cloudfront.net/contents/member/1283/12831474588621_film.jpg');"></div>
+    </div>
+
+    <hr>
+
+    <div class="example">
+      <h2>Fancier example</h2>
+      <style id="fancystyle">
+        @keyframes rotate {
+          from { background-position-y: 0; }
+          to { background-position-y: calc(24 * 640px); }
+        }
+
+        #fancy {
+          width: 640px;
+          height: 640px;
+          position: relative;
+
+          animation: rotate 2.25s steps(24) infinite paused;
+
+          /* Film strip URL for the remotely hosted image used by spinzam.com:
+          background-image: url('https://dc0sih4595mw5.cloudfront.net/contents/member/1283/12831474588621_film.jpg');
+          */
+
+          /* Film strip URL for my locally hosted image */
+          background-image: url('https://sbryan.github.io/images/foldio360-film-strip-example.jpg');
+
+          cursor: pointer;
+          user-select: none;
+
+          border-radius: 1em;
+        }
+        #fancy:active { animation-direction: reverse; }
+        #fancy:hover  { animation-play-state: running; }
+        #fancy::after {
+          display: block;
+          position: relative;
+          width: auto;
+          padding: 0.25em;
+          border-width: 1px;
+          border-radius: 1em 1em 0 0;
+
+          content: "Hover to begin rotation...";
+          font-style: italic;
+          text-align: center;
+
+          color: black;
+          background-color: lightgray;
+          border-color: grey;
+          opacity: 0.5;
+        }
+        #fancy:hover::after  { content: "Click and hold to reverse..."; }
+      </style>
+      <div id="fancy"></div>
+    </div>
+  </body>
+</html>
