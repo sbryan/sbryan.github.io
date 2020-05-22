@@ -4,74 +4,72 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
-      font-family: helvetica, sans-serif;
-      --label-font-family: helvetica, sans-serif;
-      --input-font-family: helvetica, sans-serif;
+      font-family: 'Teko', sans-serif;
     }
   body{
-	  text-align: center;
-	  background: url(https://i.imgur.com/fITvCl7.jpg);
     font-weight: 100;
-  }
-
-  h1{
-    color: #396;
-    font-weight: 100;
-    font-size: 40px;
-    margin: 40px 0px 20px;
+    background: url(https://i.imgur.com/fITvCl7.jpg);
+    background-position-y: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    align-items: center;
+    justify-content: stretch;
+    height: 100vh;
   }
 
   #clockdiv{
-	  font-family: sans-serif;
-	  color: #fff;
-	  display: inline-block;
-	  font-weight: 100;
-	  text-align: center;
-	  font-size: 30px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 10vh;
   }
 
   #clockdiv > div{
-  	padding: 10px;
-	  border-radius: 3px;
-	  background: #00BF96;
-  	display: inline-block;
+    padding: 10px;
+    display: inline-block;
+    width: 17vw;
   }
 
   #clockdiv div > span{
-	  padding: 15px;
-	  border-radius: 3px;
-	  background: #00816A;
-	  display: inline-block;
+    background: blue;
+    display: block;
+    font-size: 20vh;
+    margin: 0 1rem;
   }
 
   .smalltext{
-  	padding-top: 5px;
-	  font-size: 16px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    margin-bottom: -1rem;
   }
   </style>
   <title>PoGo Maintenance</title>
 </head>
 <body>
-  <h1>Countdown Clock</h1>
   <div id="clockdiv">
     <div>
-      <span class="days"></span>
       <div class="smalltext">Days</div>
+      <span class="days"></span>
     </div>
     <div>
-      <span class="hours"></span>
       <div class="smalltext">Hours</div>
+      <span class="hours"></span>
     </div>
     <div>
-      <span class="minutes"></span>
       <div class="smalltext">Minutes</div>
+      <span class="minutes"></span>
     </div>
     <div>
-      <span class="seconds"></span>
       <div class="smalltext">Seconds</div>
+      <span class="seconds"></span>
     </div>
   </div>
   <script>
